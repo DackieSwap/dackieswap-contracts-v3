@@ -1,0 +1,17 @@
+{
+  "MasterChefV3": "0xf2890e09D21a30873AB04AA6E790AE1d78d83B6d",
+  "SmartRouter": "0x195FBc5B8Fbd5Ac739C1BA57D4Ef6D5a704F34f7",
+  "SmartRouterHelper": "0x6510E68561F04C1d111e616750DaC2a063FF5055",
+  "MixedRouteQuoterV1": "0x",
+  "QuoterV2": "0xd1575B2e0C82fba9Eddc3de9c9AAF923AFA670cC",
+  "TokenValidator": "0x",
+  "DackieV3Factory": "0x3D237AC6D2f425D2E890Cc99198818cc1FA48870",
+  "DackieV3PoolDeployer": "0x4f205D69834f9B101b9289F7AFFAc9B77B3fF9b7",
+  "SwapRouter": "0x",
+  "V3Migrator": "0x",
+  "TickLens": "0x",
+  "NonfungibleTokenPositionDescriptor": "0xF5190E64dB4cbf7ee5E72B55cC5b2297e20264c2",
+  "NonfungiblePositionManager": "0xCfB05AB06D338FD85BBF4486e69809D96A906b77",
+  "DackieInterfaceMulticall": "0x5bA546a342BBEE029a7729A7E8e0ADb844a53802",
+  "DackieV3LmPoolDeployer": "0xd592e2C815E0cf4B62169e09934FaAB28299708e"
+}

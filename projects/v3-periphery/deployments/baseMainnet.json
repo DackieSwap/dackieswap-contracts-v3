@@ -1,0 +1,9 @@
+{
+  "SwapRouter": "0x",
+  "V3Migrator": "0x",
+  "QuoterV2": "0xd1575B2e0C82fba9Eddc3de9c9AAF923AFA670cC",
+  "TickLens": "0x",
+  "NonfungibleTokenPositionDescriptor": "0xF5190E64dB4cbf7ee5E72B55cC5b2297e20264c2",
+  "NonfungiblePositionManager": "0xCfB05AB06D338FD85BBF4486e69809D96A906b77",
+  "DackieInterfaceMulticall": "0x5bA546a342BBEE029a7729A7E8e0ADb844a53802"
+}

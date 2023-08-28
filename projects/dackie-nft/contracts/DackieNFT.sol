@@ -56,7 +56,6 @@ contract DackieNFT is ERC721, ERC721Enumerable, Ownable, Pausable {
     onlyOwner
     whenNotPaused
     {
-        require(_no > 0, "Amount cannot be zero");
         require(_treasuryMintedCount + _no <= TREASURY_MINT_LIMIT, "Exceeded treasury mint limit");
 
         _mintBatch(msg.sender, _no);

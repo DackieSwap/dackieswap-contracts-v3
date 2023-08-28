@@ -5,4 +5,6 @@ interface IDackieV3LmPool {
   function accumulateReward(uint32 currTimestamp) external;
 
   function crossLmTick(int24 tick, bool zeroForOne) external;
+
+  function initialize() external;
 }

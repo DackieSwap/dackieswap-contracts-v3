@@ -112,7 +112,13 @@ contract DackiEggNFT is ERC721, ERC721Enumerable, Ownable, Pausable, Whitelist {
     // Withdraw contract balance to owner
     function withdraw() public onlyOwner {
         uint256 balance = address(this).balance;
-        payable(owner()).transfer(balance);
+        require(balance > 0, "No balance to withdraw");
+
+        // Using call to transfer funds
+        (bool success, ) = owner().call{value: balance}("");
+        require(success, "Withdrawal failed");
+
+        emit Withdrawn(owner(), balance);
     }
 
     function setMintStartTime(uint256 newStartTime) public onlyOwner {

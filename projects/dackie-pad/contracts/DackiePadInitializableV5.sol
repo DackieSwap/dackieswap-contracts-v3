@@ -309,6 +309,10 @@ contract DackiePadInitializableV5 is IDackiePadV5, ReentrancyGuard, Whitelist {
 
     /**
      * @notice It allows the admin to withdraw funds
+     * @purpose
+     * - Recover in case setup wrong.
+     * - Withdraw before IDO end to setup LP in case IDO project not enough fund.
+     * - DackiePad is the only one owner of IDO contracts so this method just can be called by DackiePad.
      * @param _lpAmount: the number of LP token to withdraw (18 decimals)
      * @param _offerAmount: the number of offering amount to withdraw
      * @dev This function is only callable by admin.
@@ -791,7 +795,7 @@ contract DackiePadInitializableV5 is IDackiePadV5, ReentrancyGuard, Whitelist {
     {
         uint256 ratioOverflow = _totalAmountPool.div(_raisingAmountPool);
         if (ratioOverflow >= 1500) {
-            return 250000000; // 0.0125%
+            return 250000000; // 0.025%
         } else if (ratioOverflow >= 1000) {
             return 500000000; // 0.05%
         } else if (ratioOverflow >= 500) {

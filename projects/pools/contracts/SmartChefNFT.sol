@@ -303,7 +303,7 @@ contract SmartChefNFT is Ownable, ReentrancyGuard {
     // To remove a specific tokenId for a user
     function removeTokenId(UserInfo storage _user, uint256 _tokenId) internal {
         uint256[] storage tokenIds = _user.tokenIds;
-        uint256 indexToBeDeleted;
+        uint256 indexToBeDeleted = tokenIds.length;
 
         for (uint256 i = 0; i < tokenIds.length; i++) {
             if (tokenIds[i] == _tokenId) {
@@ -311,6 +311,9 @@ contract SmartChefNFT is Ownable, ReentrancyGuard {
                 break;
             }
         }
+
+        // Ensure that the tokenId exists in user's tokenIds
+        require(indexToBeDeleted != tokenIds.length, "Token ID not found for user");
 
         if (indexToBeDeleted < tokenIds.length - 1) {
             tokenIds[indexToBeDeleted] = tokenIds[tokenIds.length - 1];

@@ -17,8 +17,6 @@ contract SmartChefNFTFactory is Ownable {
      * @param _rewardPerSecond: reward per second (in rewardToken)
      * @param _startTimestamp: start block timestamp
      * @param _endTimestamp: end block timestamp
-     * @param _poolLimitPerUser: pool limit per user in stakedToken (if any, else 0)
-     * @param _numberSecondsForUserLimit: seconds available for user limit (after start block)
      * @param _admin: admin address with ownership
      * @return address of new smart chef contract
      */

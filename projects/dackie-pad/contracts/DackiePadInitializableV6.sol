@@ -325,15 +325,12 @@ contract DackiePadInitializableV6 is IDackiePadV6, ReentrancyGuard, Whitelist {
 
     /**
      * @notice It allows the admin to withdraw funds
-     * @purpose
-     * - Recover in case setup wrong.
-     * - Withdraw before IDO end to setup LP in case IDO project not enough fund.
-     * - DackiePad is the only one owner of IDO contracts so this method just can be called by DackiePad.
      * @param _lpAmount: the number of LP token to withdraw (18 decimals)
      * @param _offerAmount: the number of offering amount to withdraw
      * @dev This function is only callable by admin.
      */
     function finalWithdraw(uint256 _lpAmount, uint256 _offerAmount) external override onlyOwner {
+        require(block.number >= endBlock, "Operations: Can only withdraw after endBlock");
         require(_lpAmount <= raiseToken.balanceOf(address(this)), "Operations: Not enough LP tokens");
         require(_offerAmount <= offeringToken.balanceOf(address(this)), "Operations: Not enough offering tokens");
 

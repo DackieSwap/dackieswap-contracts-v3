@@ -23,4 +23,4 @@ This repo contains all the contracts used in DackieSwap.
 
 🦆 Galxe: http://galxe.com/Dackie
 
-🦆 Discord: http://discord.gg/dackie
+🦆 Discord: http://discord.gg/dackieofficial 

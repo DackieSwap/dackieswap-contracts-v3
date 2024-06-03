@@ -101,7 +101,6 @@ contract MasterChefV3 is INonfungiblePositionManagerStruct, Multicall, Ownable, 
     /// @notice Hard limit for maxmium boost factor, it must greater than BOOST_PRECISION
     uint256 public constant MAX_BOOST_PRECISION = 200 * 1e10;
     uint256 constant Q128 = 0x100000000000000000000000000000000;
-    uint256 constant MAX_U256 = type(uint256).max;
 
     /// @notice Record the cake amount belong to MasterChefV3.
     uint256 public cakeAmountBelongToMC;
@@ -231,13 +230,12 @@ contract MasterChefV3 is INonfungiblePositionManagerStruct, Multicall, Ownable, 
                     positionInfo.tickLower,
                     positionInfo.tickUpper
                 );
-                if (
-                    rewardGrowthInside > positionInfo.rewardGrowthInside &&
-                    MAX_U256 / (rewardGrowthInside - positionInfo.rewardGrowthInside) > positionInfo.boostLiquidity
-                )
-                    reward =
-                        ((rewardGrowthInside - positionInfo.rewardGrowthInside) * positionInfo.boostLiquidity) /
-                        Q128;
+
+                uint256 rewardGrowthInsideDelta;
+                unchecked {
+                    rewardGrowthInsideDelta = rewardGrowthInside - positionInfo.rewardGrowthInside;
+                }
+                reward = (rewardGrowthInsideDelta * positionInfo.boostLiquidity) / Q128;
             }
             reward += positionInfo.reward;
         }
@@ -336,17 +334,17 @@ contract MasterChefV3 is INonfungiblePositionManagerStruct, Multicall, Ownable, 
         if (msg.sender != address(nonfungiblePositionManager)) revert NotDackieNFT();
         DepositCache memory cache;
         (
-            ,
-            ,
+        ,
+        ,
             cache.token0,
             cache.token1,
             cache.fee,
             cache.tickLower,
             cache.tickUpper,
             cache.liquidity,
-            ,
-            ,
-            ,
+        ,
+        ,
+        ,
 
         ) = nonfungiblePositionManager.positions(_tokenId);
         if (cache.liquidity == 0) revert NoLiquidity();
@@ -365,8 +363,6 @@ contract MasterChefV3 is INonfungiblePositionManagerStruct, Multicall, Ownable, 
         // Need to update LMPool.
         LMPool.accumulateReward(uint32(block.timestamp));
         updateLiquidityOperation(positionInfo, _tokenId, 0);
-
-        positionInfo.rewardGrowthInside = LMPool.getRewardGrowthInside(cache.tickLower, cache.tickUpper);
 
         // Update Enumerable
         addToken(_from, _tokenId);
@@ -397,11 +393,12 @@ contract MasterChefV3 is INonfungiblePositionManagerStruct, Multicall, Ownable, 
             // Update rewardGrowthInside
             LMPool.accumulateReward(uint32(block.timestamp));
             uint256 rewardGrowthInside = LMPool.getRewardGrowthInside(positionInfo.tickLower, positionInfo.tickUpper);
-            // Check overflow
-            if (
-                rewardGrowthInside > positionInfo.rewardGrowthInside &&
-                MAX_U256 / (rewardGrowthInside - positionInfo.rewardGrowthInside) > positionInfo.boostLiquidity
-            ) reward = ((rewardGrowthInside - positionInfo.rewardGrowthInside) * positionInfo.boostLiquidity) / Q128;
+
+            uint256 rewardGrowthInsideDelta;
+            unchecked {
+                rewardGrowthInsideDelta = rewardGrowthInside - positionInfo.rewardGrowthInside;
+            }
+            reward = (rewardGrowthInsideDelta * positionInfo.boostLiquidity) / Q128;
             positionInfo.rewardGrowthInside = rewardGrowthInside;
         }
         reward += positionInfo.reward;
@@ -510,6 +507,8 @@ contract MasterChefV3 is INonfungiblePositionManagerStruct, Multicall, Ownable, 
             ILMPool LMPool = ILMPool(pool.v3Pool.lmPool());
             if (address(LMPool) == address(0)) revert NoLMPool();
             LMPool.updatePosition(tickLower, tickUpper, liquidityDelta);
+            // Update latest rewardGrowthInside
+            positionInfo.rewardGrowthInside = LMPool.getRewardGrowthInside(tickLower, tickUpper);
             emit UpdateLiquidity(msg.sender, positionInfo.pid, _tokenId, liquidityDelta, tickLower, tickUpper);
         }
     }
@@ -632,7 +631,7 @@ contract MasterChefV3 is INonfungiblePositionManagerStruct, Multicall, Ownable, 
         // Need to reduce cakeAmountBelongToMC.
         if (_token == address(CAKE)) {
             unchecked {
-                // In fact balance should always be greater than or equal to cakeAmountBelongToMC, but in order to avoid any unknown issue, we added this check.
+            // In fact balance should always be greater than or equal to cakeAmountBelongToMC, but in order to avoid any unknown issue, we added this check.
                 if (balance >= cakeAmountBelongToMC) {
                     balance -= cakeAmountBelongToMC;
                 } else {
@@ -676,7 +675,7 @@ contract MasterChefV3 is INonfungiblePositionManagerStruct, Multicall, Ownable, 
         // Need to reduce cakeAmountBelongToMC.
         if (token == address(CAKE)) {
             unchecked {
-                // In fact balance should always be greater than or equal to cakeAmountBelongToMC, but in order to avoid any unknown issue, we added this check.
+            // In fact balance should always be greater than or equal to cakeAmountBelongToMC, but in order to avoid any unknown issue, we added this check.
                 if (balanceToken >= cakeAmountBelongToMC) {
                     balanceToken -= cakeAmountBelongToMC;
                 } else {

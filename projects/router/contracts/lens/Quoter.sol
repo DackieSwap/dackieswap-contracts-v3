@@ -2,12 +2,12 @@
 pragma solidity =0.7.6;
 pragma abicoder v2;
 
-import '@pancakeswap/v3-periphery/contracts/base/PeripheryImmutableState.sol';
-import '@pancakeswap/v3-core/contracts/libraries/SafeCast.sol';
-import '@pancakeswap/v3-core/contracts/libraries/TickMath.sol';
-import '@pancakeswap/v3-core/contracts/interfaces/IDackieV3Pool.sol';
-import '@pancakeswap/v3-core/contracts/interfaces/callback/IDackieV3SwapCallback.sol';
-import '@pancakeswap/v3-periphery/contracts/libraries/Path.sol';
+import '@dackieswap/v3-periphery/contracts/base/PeripheryImmutableState.sol';
+import '@dackieswap/v3-core/contracts/libraries/SafeCast.sol';
+import '@dackieswap/v3-core/contracts/libraries/TickMath.sol';
+import '@dackieswap/v3-core/contracts/interfaces/IDackieV3Pool.sol';
+import '@dackieswap/v3-core/contracts/interfaces/callback/IDackieV3SwapCallback.sol';
+import '@dackieswap/v3-periphery/contracts/libraries/Path.sol';
 
 import '../interfaces/IQuoter.sol';
 import '../libraries/SmartRouterHelper.sol';
@@ -26,7 +26,7 @@ contract Quoter is IQuoter, IDackieV3SwapCallback, PeripheryImmutableState {
     constructor(address _deployer, address _factory, address _WETH9) PeripheryImmutableState(_deployer, _factory, _WETH9) {}
 
     /// @inheritdoc IDackieV3SwapCallback
-    function pancakeV3SwapCallback(
+    function dackieV3SwapCallback(
         int256 amount0Delta,
         int256 amount1Delta,
         bytes memory path

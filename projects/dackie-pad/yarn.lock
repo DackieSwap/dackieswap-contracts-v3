@@ -810,7 +810,7 @@
     "@types/sinon-chai" "^3.2.3"
     "@types/web3" "1.0.19"
 
-"@pancakeswap/v3-lm-pool@file:../v3-lm-pool":
+"@dackieswap/v3-lm-pool@file:../v3-lm-pool":
   version "1.0.0"
 
 "@resolver-engine/core@^0.3.3":

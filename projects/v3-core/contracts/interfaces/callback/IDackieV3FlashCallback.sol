@@ -10,7 +10,7 @@ interface IDackieV3FlashCallback {
     /// @param fee0 The fee amount in token0 due to the pool by the end of the flash
     /// @param fee1 The fee amount in token1 due to the pool by the end of the flash
     /// @param data Any data passed through by the caller via the IDackieV3PoolActions#flash call
-    function pancakeV3FlashCallback(
+    function dackieV3FlashCallback(
         uint256 fee0,
         uint256 fee1,
         bytes calldata data

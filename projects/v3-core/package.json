@@ -1,6 +1,6 @@
 {
-  "name": "@pancakeswap/v3-core",
-  "description": "Core smart contracts of DackieSwap V3 (Forked from PancakeSwap V3)",
+  "name": "@dackieswap/v3-core",
+  "description": "Core smart contracts of DackieSwap V3 (Forked from DackieSwap V3)",
   "license": "GPL-2.0-or-later",
   "publishConfig": {
     "access": "public"
@@ -23,8 +23,8 @@
     "node": ">=10"
   },
   "devDependencies": {
-    "@pancakeswap/common": "*",
-    "@pancakeswap/v3-lm-pool": "*",
+    "@dackieswap/common": "*",
+    "@dackieswap/v3-lm-pool": "*",
     "@nomiclabs/hardhat-ethers": "^2.0.2",
     "@nomiclabs/hardhat-etherscan": "^3.1.7",
     "@nomiclabs/hardhat-waffle": "^2.0.1",

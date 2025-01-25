@@ -2,13 +2,12 @@
   "name": "dackieswap-v3",
   "private": true,
   "workspaces": [
-    "projects/*",
-    "deployer/*",
-    "common"
+    "projects/*"
   ],
   "scripts": {
     "compile": "yarn workspaces run compile",
-    "test": "yarn workspaces run test"
+    "test": "yarn workspaces run test",
+    "clean": "yarn workspaces run clean"
   },
   "devDependencies": {
     "zx": "^7.2.0",

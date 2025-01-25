@@ -667,7 +667,7 @@
     table "^6.8.0"
     undici "^5.14.0"
 
-"@pancakeswap/v3-core@file:../v3-core":
+"@dackieswap/v3-core@file:../v3-core":
   version "1.0.1"
 
 "@scure/base@~1.1.0":

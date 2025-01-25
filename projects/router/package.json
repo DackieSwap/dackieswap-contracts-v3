@@ -1,6 +1,6 @@
 {
-  "name": "@pancakeswap/smart-router",
-  "description": "Pancake Smart Router",
+  "name": "@dackieswap/smart-router",
+  "description": "Dackie Smart Router",
   "version": "1.0.0",
   "license": "GPL-2.0-or-later",
   "publishConfig": {
@@ -34,8 +34,8 @@
     "@nomiclabs/hardhat-etherscan": "^3.1.5",
     "@openzeppelin/contracts": "3.4.2-solc-0.7",
     "@openzeppelin/test-helpers": "^0.5.11",
-    "@pancakeswap/eslint-config-pancake": "^1.2.0",
-    "@pancakeswap/pancake-swap-lib": "0.0.4",
+    "@dackieswap/eslint-config-dackie": "^1.2.0",
+    "@dackieswap/dackie-swap-lib": "0.0.4",
     "@types/chai": "^4.2.21",
     "@types/mocha": "^8.2.2",
     "@types/node": "^14.14.35",
@@ -56,8 +56,8 @@
     "web3": "^1.3.6",
     "hardhat-tracer": "^2.1.0",
     "@uniswap/v2-core": "1.0.1",
-    "@pancakeswap/v3-core": "*",
-    "@pancakeswap/v3-periphery": "*"
+    "@dackieswap/v3-core": "*",
+    "@dackieswap/v3-periphery": "*"
   },
   "dependencies": {}
 }

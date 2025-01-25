@@ -1551,9 +1551,9 @@
     proper-lockfile "^4.1.1"
     solidity-ast "^0.4.15"
 
-"@pancakeswap/eslint-config-pancake@^1.2.0":
+"@dackieswap/eslint-config-dackie@^1.2.0":
   version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@pancakeswap/eslint-config-pancake/-/eslint-config-pancake-1.2.0.tgz#ecb8327d4269899a927064f6a7e6169b09cd6f12"
+  resolved "https://registry.yarnpkg.com/@dackieswap/eslint-config-dackie/-/eslint-config-dackie-1.2.0.tgz#ecb8327d4269899a927064f6a7e6169b09cd6f12"
   integrity sha512-6WzZY0PNc+lvg99DsN6oXEDBDAEGQnDQNc/kLrTiObGSIBe0ubpt4390zjf1nuVhCknvDLxbzf4Ch8m2bMCL5w==
   dependencies:
     "@typescript-eslint/eslint-plugin" "^4.7.0"
@@ -1565,9 +1565,9 @@
     eslint-plugin-react "^7.21.5"
     eslint-plugin-react-hooks "^4.0.0"
 
-"@pancakeswap/pancake-swap-lib@0.0.4":
+"@dackieswap/dackie-swap-lib@0.0.4":
   version "0.0.4"
-  resolved "https://registry.yarnpkg.com/@pancakeswap/pancake-swap-lib/-/pancake-swap-lib-0.0.4.tgz#b00f78c3aa249e02146e366322f2d65154a893ef"
+  resolved "https://registry.yarnpkg.com/@dackieswap/dackie-swap-lib/-/dackie-swap-lib-0.0.4.tgz#b00f78c3aa249e02146e366322f2d65154a893ef"
   integrity sha512-efauTqrPQX0P2X159Z5YnAVNmD8jvFxei9iIbDU850MG7KuupfqNTfDoN2/dCMo2GomSFokG2MjW0GenZc4EFg==
 
 "@resolver-engine/core@^0.3.3":

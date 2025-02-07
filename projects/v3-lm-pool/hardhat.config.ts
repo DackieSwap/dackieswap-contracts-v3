@@ -34,8 +34,8 @@ const config: HardhatUserConfig = {
   },
   etherscan: {
     apiKey: {
-      "baseGoerli": "PLACEHOLDER_STRING",
-      "baseMainnet": process.env.BASE_ETHERSCAN_API_KEY!
+      'baseMainnet': process.env.BASE_ETHERSCAN_API_KEY!,
+      'baseSepolia': process.env.BASE_SEPOLIA_API_KEY!,
     },
     customChains: [
       {
@@ -62,5 +62,4 @@ const config: HardhatUserConfig = {
     artifacts: './artifacts',
   },
 }
-
 export default config

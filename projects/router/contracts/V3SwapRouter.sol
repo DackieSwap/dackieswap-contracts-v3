@@ -2,9 +2,9 @@
 pragma solidity =0.7.6;
 pragma abicoder v2;
 
-import '@pancakeswap/v3-core/contracts/libraries/SafeCast.sol';
-import '@pancakeswap/v3-core/contracts/libraries/TickMath.sol';
-import '@pancakeswap/v3-periphery/contracts/libraries/Path.sol';
+import '@dackieswap/v3-core/contracts/libraries/SafeCast.sol';
+import '@dackieswap/v3-core/contracts/libraries/TickMath.sol';
+import '@dackieswap/v3-periphery/contracts/libraries/Path.sol';
 import '@openzeppelin/contracts/token/ERC20/IERC20.sol';
 import '@openzeppelin/contracts/utils/ReentrancyGuard.sol';
 
@@ -33,7 +33,7 @@ abstract contract V3SwapRouter is IV3SwapRouter, PeripheryPaymentsWithFeeExtende
     }
 
     /// @inheritdoc IDackieV3SwapCallback
-    function pancakeV3SwapCallback(
+    function dackieV3SwapCallback(
         int256 amount0Delta,
         int256 amount1Delta,
         bytes calldata _data

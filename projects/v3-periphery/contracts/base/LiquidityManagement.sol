@@ -2,9 +2,9 @@
 pragma solidity =0.7.6;
 pragma abicoder v2;
 
-import '@pancakeswap/v3-core/contracts/interfaces/IDackieV3Factory.sol';
-import '@pancakeswap/v3-core/contracts/interfaces/callback/IDackieV3MintCallback.sol';
-import '@pancakeswap/v3-core/contracts/libraries/TickMath.sol';
+import '@dackieswap/v3-core/contracts/interfaces/IDackieV3Factory.sol';
+import '@dackieswap/v3-core/contracts/interfaces/callback/IDackieV3MintCallback.sol';
+import '@dackieswap/v3-core/contracts/libraries/TickMath.sol';
 
 import '../libraries/PoolAddress.sol';
 import '../libraries/CallbackValidation.sol';
@@ -22,7 +22,7 @@ abstract contract LiquidityManagement is IDackieV3MintCallback, PeripheryImmutab
     }
 
     /// @inheritdoc IDackieV3MintCallback
-    function pancakeV3MintCallback(
+    function dackieV3MintCallback(
         uint256 amount0Owed,
         uint256 amount1Owed,
         bytes calldata data

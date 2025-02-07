@@ -2,13 +2,13 @@
 pragma solidity =0.7.6;
 pragma abicoder v2;
 
-import '@pancakeswap/v3-periphery/contracts/base/PeripheryImmutableState.sol';
-import '@pancakeswap/v3-core/contracts/libraries/SafeCast.sol';
-import '@pancakeswap/v3-core/contracts/libraries/TickMath.sol';
-import '@pancakeswap/v3-core/contracts/libraries/TickBitmap.sol';
-import '@pancakeswap/v3-core/contracts/interfaces/IDackieV3Pool.sol';
-import '@pancakeswap/v3-core/contracts/interfaces/callback/IDackieV3SwapCallback.sol';
-import '@pancakeswap/v3-periphery/contracts/libraries/Path.sol';
+import '@dackieswap/v3-periphery/contracts/base/PeripheryImmutableState.sol';
+import '@dackieswap/v3-core/contracts/libraries/SafeCast.sol';
+import '@dackieswap/v3-core/contracts/libraries/TickMath.sol';
+import '@dackieswap/v3-core/contracts/libraries/TickBitmap.sol';
+import '@dackieswap/v3-core/contracts/interfaces/IDackieV3Pool.sol';
+import '@dackieswap/v3-core/contracts/interfaces/callback/IDackieV3SwapCallback.sol';
+import '@dackieswap/v3-periphery/contracts/libraries/Path.sol';
 import '@uniswap/v2-core/contracts/interfaces/IUniswapV2Pair.sol';
 
 import '../base/ImmutableState.sol';
@@ -56,7 +56,7 @@ contract MixedRouteQuoterV1 is IMixedRouteQuoterV1, IDackieV3SwapCallback, Perip
     /************************************************** V3 **************************************************/
 
     /// @inheritdoc IDackieV3SwapCallback
-    function pancakeV3SwapCallback(
+    function dackieV3SwapCallback(
         int256 amount0Delta,
         int256 amount1Delta,
         bytes memory path

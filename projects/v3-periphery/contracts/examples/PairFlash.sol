@@ -2,8 +2,8 @@
 pragma solidity =0.7.6;
 pragma abicoder v2;
 
-import '@pancakeswap/v3-core/contracts/interfaces/callback/IDackieV3FlashCallback.sol';
-import '@pancakeswap/v3-core/contracts/libraries/LowGasSafeMath.sol';
+import '@dackieswap/v3-core/contracts/interfaces/callback/IDackieV3FlashCallback.sol';
+import '@dackieswap/v3-core/contracts/libraries/LowGasSafeMath.sol';
 
 import '../base/PeripheryPayments.sol';
 import '../base/PeripheryImmutableState.sol';
@@ -44,7 +44,7 @@ contract PairFlash is IDackieV3FlashCallback, PeripheryPayments {
     /// @param data The data needed in the callback passed as FlashCallbackData from `initFlash`
     /// @notice implements the callback called from flash
     /// @dev fails if the flash is not profitable, meaning the amountOut from the flash is less than the amount borrowed
-    function pancakeV3FlashCallback(
+    function dackieV3FlashCallback(
         uint256 fee0,
         uint256 fee1,
         bytes calldata data

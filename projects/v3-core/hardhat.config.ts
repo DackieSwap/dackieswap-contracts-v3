@@ -122,4 +122,5 @@ const config = {
     artifacts: './artifacts',
   },
 }
+
 export default config

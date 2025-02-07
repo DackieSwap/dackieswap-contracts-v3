@@ -1,3 +1,3 @@
-# Pools Project
+# Staking Pools Project
 
 [<< Home](../../README.md)

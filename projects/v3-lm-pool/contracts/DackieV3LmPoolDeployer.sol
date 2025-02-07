@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 pragma solidity =0.7.6;
 
-import '@pancakeswap/v3-core/contracts/interfaces/IDackieV3Factory.sol';
-import '@pancakeswap/v3-periphery/contracts/interfaces/INonfungiblePositionManager.sol';
+import '@dackieswap/v3-core/contracts/interfaces/IDackieV3Factory.sol';
+import '@dackieswap/v3-periphery/contracts/interfaces/INonfungiblePositionManager.sol';
 
 import './DackieV3LmPool.sol';
 
@@ -32,7 +32,7 @@ contract DackieV3LmPoolDeployer {
     }
 
     /// @dev Deploys a LmPool
-    /// @param pool The contract address of the PancakeSwap V3 pool
+    /// @param pool The contract address of the DackieSwap V3 pool
     function deploy(address pool) external onlyMasterChef returns (address lmPool) {
         parameters = Parameters({pool: pool, masterChef: masterChef});
 
@@ -40,7 +40,7 @@ contract DackieV3LmPoolDeployer {
 
         delete parameters;
 
-        // Set new LMPool for pancake v3 pool.
+        // Set new LMPool for dackie v3 pool.
         IDackieV3Factory(INonfungiblePositionManager(IMasterChefV3(masterChef).nonfungiblePositionManager()).factory())
         .setLmPool(pool, lmPool);
 

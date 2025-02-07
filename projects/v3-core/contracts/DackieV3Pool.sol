@@ -25,7 +25,7 @@ import './interfaces/callback/IDackieV3MintCallback.sol';
 import './interfaces/callback/IDackieV3SwapCallback.sol';
 import './interfaces/callback/IDackieV3FlashCallback.sol';
 
-import '@pancakeswap/v3-lm-pool/contracts/interfaces/IDackieV3LmPool.sol';
+import '@dackieswap/v3-lm-pool/contracts/interfaces/IDackieV3LmPool.sol';
 
 contract DackieV3Pool is IDackieV3Pool {
     using LowGasSafeMath for uint256;
@@ -501,7 +501,7 @@ contract DackieV3Pool is IDackieV3Pool {
         uint256 balance1Before;
         if (amount0 > 0) balance0Before = balance0();
         if (amount1 > 0) balance1Before = balance1();
-        IDackieV3MintCallback(msg.sender).pancakeV3MintCallback(amount0, amount1, data);
+        IDackieV3MintCallback(msg.sender).dackieV3MintCallback(amount0, amount1, data);
         if (amount0 > 0) require(balance0Before.add(amount0) <= balance0(), 'M0');
         if (amount1 > 0) require(balance1Before.add(amount1) <= balance1(), 'M1');
 
@@ -804,13 +804,13 @@ contract DackieV3Pool is IDackieV3Pool {
             if (amount1 < 0) TransferHelper.safeTransfer(token1, recipient, uint256(-amount1));
 
             uint256 balance0Before = balance0();
-            IDackieV3SwapCallback(msg.sender).pancakeV3SwapCallback(amount0, amount1, data);
+            IDackieV3SwapCallback(msg.sender).dackieV3SwapCallback(amount0, amount1, data);
             require(balance0Before.add(uint256(amount0)) <= balance0(), 'IIA');
         } else {
             if (amount0 < 0) TransferHelper.safeTransfer(token0, recipient, uint256(-amount0));
 
             uint256 balance1Before = balance1();
-            IDackieV3SwapCallback(msg.sender).pancakeV3SwapCallback(amount0, amount1, data);
+            IDackieV3SwapCallback(msg.sender).dackieV3SwapCallback(amount0, amount1, data);
             require(balance1Before.add(uint256(amount1)) <= balance1(), 'IIA');
         }
 
@@ -836,7 +836,7 @@ contract DackieV3Pool is IDackieV3Pool {
         if (amount0 > 0) TransferHelper.safeTransfer(token0, recipient, amount0);
         if (amount1 > 0) TransferHelper.safeTransfer(token1, recipient, amount1);
 
-        IDackieV3FlashCallback(msg.sender).pancakeV3FlashCallback(fee0, fee1, data);
+        IDackieV3FlashCallback(msg.sender).dackieV3FlashCallback(fee0, fee1, data);
 
         uint256 balance0After = balance0();
         uint256 balance1After = balance1();
